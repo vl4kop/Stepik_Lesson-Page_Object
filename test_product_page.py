@@ -4,7 +4,7 @@ from pages.product_page import ProductPage
 link = 'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear'
 
 
-def test_product_add_to_cart(browser):
+def test_guest_can_add_product_to_basket(browser):
     page = ProductPage(browser, link)
     page.open()
 
@@ -12,8 +12,6 @@ def test_product_add_to_cart(browser):
     page.add_to_cart()
 
     page.solve_quiz_and_get_code()
-
-    page.should_be_value()
 
     page.name_of_book()
     page.value_of_cart()
