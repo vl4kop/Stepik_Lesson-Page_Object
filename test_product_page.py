@@ -1,4 +1,5 @@
 from pages.product_page import ProductPage
+from pages.basket_page import BasketPage
 import pytest
 
 
@@ -78,3 +79,15 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link)
     page.open()
     page.go_to_login_page()
+
+
+@pytest.mark.new
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    page = BasketPage(browser, link3)
+    page.open()
+    page.open_cart()
+    page.should_be_no_empty_cart()
+    page.should_be_empty_cart()
+
+
+# pytest -v -s -m "new" --tb=line --language=en test_product_page.py
