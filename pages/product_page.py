@@ -26,3 +26,11 @@ class ProductPage(BasePage):
         value_price_of_product_in_main = self.browser.find_element(*ProductPageLocators.CHECK_BASKET_VALUE).text
         print(value_price_of_product_in_cart, value_price_of_product_in_main)
         assert value_price_of_product_in_cart == value_price_of_product_in_main, 'Another price added to cart'
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_be_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
